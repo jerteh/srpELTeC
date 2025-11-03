@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .bg{ fill:#c4b5fd; }      /* nežno ljubičasta (violet-300) */
+      .txt{ fill:#1f2937; font: 700 72px Inter, Arial, sans-serif; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="128" height="128" rx="24" ry="24"/>
+  <text class="txt" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">SE</text>
+</svg>
