@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SrpELTeC: Serbian Literary Corpus for Distant Reading</title>
+  <meta name="description" content="SrpELTeC — Serbian sub-collection of ELTeC for distant reading: TEI-encoded novels (1840–1920), TXM analyses, NER/NEL, Linked Data (NIF/Wikidata), tools and publications." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text:#1f2937; /* slate-800 */
+      --muted:#4b5563; /* slate-600 */
+      --accent:#6b21a8; /* purple-800 */
+      --accent-soft:#ede9fe; /* violet-50 */
+      --line:#e5e7eb; /* gray-200 */
+      --bg:#ffffff; /* white background */
+      --card:#fafafa;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:28px 18px}
+    header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .logos{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .logos img{height:70px;object-fit:contain;display:block}
+    .brand{font-weight:800;font-size:clamp(18px,2.6vw,24px);letter-spacing:.2px}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+    nav a{padding:8px 10px;border-radius:12px}
+    nav a:hover{background:var(--accent-soft);text-decoration:none}
+
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 0}
+    .hero h1{margin:0 0 10px;font-size:clamp(28px,4.2vw,46px);line-height:1.06;font-weight:800;color:#3d3a6b}
+    .hero p{margin:0 0 18px;color:var(--muted);font-size:clamp(16px,1.6vw,18px)}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);border:1px solid #ddd;padding:7px 12px;border-radius:999px;font-size:13px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#fff}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    .btn:hover{filter:brightness(0.98);text-decoration:none}
+
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width: 900px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}.grid.cols-2{grid-template-columns:1fr}}
+
+    h2{font-size:clamp(20px,2.6vw,28px);margin:28px 0 10px}
+    h3{font-size:clamp(18px,2vw,22px);margin:18px 0 8px}
+    .muted{color:var(--muted)}
+    .kvs{display:flex;gap:16px;flex-wrap:wrap}
+    .kv{flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+    .kv b{display:block;font-size:20px}
+    .foot{margin-top:30px;border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:14px}
+    code,kbd,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .refs li{margin-bottom:8px}
+    .author-block{font-size:15px;color:var(--muted)}
+    .author-block a{color:inherit}
+	.logo{
+    width:38px;height:38px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:grid;place-items:center;color:white;font-weight:800;
+    box-shadow:0 6px 14px rgba(13,71,161,.18)
+  }
+	.logo-bg{ background:#c4b5fd;  padding:8px 10px;            /* margina oko logotipa */
+     border-radius:12px;          /* zaobljeni uglovi (po želji) */
+     display:inline-flex; align-items:center; justify-content:center; }
+    .logo-bg img{ height:40px;  width:auto;
+     display:block;               /* uklanja prazni razmak ispod slike */
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="imgs/favicon.svg">
+</head>
+<body>
+  <header>
+   
+   <!-- /favicon.svg -->
+
+
+    <div class="container topbar">
+	 
+      <div class="logos">
+        <img src="imgs/TeslaJertehDRLogo.png" alt="SrpELTeC logo" /> 
+      </div>
+      <div class="brand">SrpELTeC</div>
+	   
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#stats">Stats</a></li>
+          <li><a href="#platforms">Platforms</a></li>
+          <li><a href="#llod">Linked Data</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div>
+        <span class="badge">Serbian ELTeC sub‑collection • 1840–1920 • TEI/XML</span>
+        <h1>SrpELTeC: Serbian Literary Corpus for Distant Reading</h1>
+        <p class="author-block">
+		  This is the Serbian novel collection for the ELTeC, the European Literary Text Collection, produced by the COST Action Distant Reading for European Literary History, <a href="https://distant-reading.net">CA16204</a>.<br/>
+		   <b>Collection editor:</b> Cvetana Krstev, JeRTeH &amp; University of Belgrade; <br/>
+		   <b>Contributors:</b> Ranka Stanković, JeRTeH &amp; University of Belgrade; Aleksandra Trtovac, Vasilije Milnović, University Library “Svetozar Marković”; volunteers of <a href="http://jerteh.rs/">Jerteh</a> (Society for Language Resources and Technologies), the most active Duško Vitas and Ivan Obradović. </p>
+        <div class="cta">
+          <a class="btn primary" href="#downloads">Get the corpus</a>
+          <a class="btn" href="srELTeC-list.html">Browse corpus</a>
+          <a class="btn" href="#publications">Read publications</a>
+		</div>
+      </div>
+      <div class="card">
+	  <h3>Sources</h3> 
+	  <p>University Library “Svetozar Marković”, National Library of Serbia, "Matica srpska" Library, Library of SASA, Library of Serbian Literature Department at the Faculty of Philology UB, private library Cvetana Krstev &amp; Duško Vitas </p>
+        <h3>License</h3>
+        <p>All versions of SrpELTeC are freely available under <a href="https://creativecommons.org/licenses/by/4.0/">CC‑BY 4.0</a>.</p>
+        <h3>Citation</h3>
+        <p>Please cite the publications listed below (see <a href="#publications">Publications</a>).</p>
+      </div>
+    </section>
+
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <div class="card">
+        <p>
+          The corpus SrpELTeC was developed within COST Action CA16204 <em>Distant Reading for European Literary History</em>. Novels were selected, prepared, and annotated using ELTeC-wide principles. All texts are manually encoded in TEI with rich metadata and structural annotation, while automatic annotation includes POS‑tagging, lemmatization, and named entities, relying on JeRTeh language resources. SrpELTeC integrates with Wikidata via SPARQL queries and offers a Linked Data/NIF edition prepared within COST Action CA18209 <em>NexusLinguarum</em>. All versions are open under CC‑BY.
+        </p>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Key Features</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Curated selection</h3>
+          <p><a href="https://github.com/COST-ELTeC/ELTeC-srp">100 novels</a> (1840–1920) chosen to balance gender, length, period coverage, and canonicality.</p>
+		  <p><a href="https://github.com/COST-ELTeC/ELTeC-srp-ext">20 novels</a> in extended collection from the same period</p>
+        </div>
+        <div class="card">
+          <h3>TEI Level‑1 &amp; Level‑2</h3>
+          <p>Manually curated TEI headers and structure following  <a href="https://distantreading.github.io/Schema/eltec-1.html">TEI Level‑1</a> guidelines;
+          <p>Tokenization, sentences, POS, lemmas, and seven named entitiy classes (PERS, ROLE, LOC, ORG, DEMO, EVENT, WORK) foolowing  <a href="https://distantreading.github.io/Schema/eltec-2.html">Level‑2</a> guidelines.</p>
+		</div>
+        <div class="card">
+          <h3>Infotheca special issue</h3>
+          <p>Infotheca - Journal for Digital Humanities, <a href="https://infoteka.bg.ac.rs/ojs/index.php/Infoteka/issue/view/21 ">Vol 21 No 2 (2021)</a>, issue dedicated to the srpELTeC collection. </p>
+		  <span class="logo-bg"> <a href="https://infoteka.bg.ac.rs/ojs/index.php/Infoteka/issue/view/21 "> <img src="imgs/pageHeaderLogoImage_en_US.png" alt="Logo"></a> </span> 
+        </div>
+        <div class="card">
+          <h3>Tooling</h3>
+          <p>Annotations using tools integrated via JeRTeh pipelines. <a href="http://textometrie.ens-lyon.fr/">TXM</a> for textometry ; <a href="https://unitexgramlab.org/">UnitexGramLab</a>; <a href="https://live.european-language-grid.eu/catalogue/ld/9296">SrpKor4Tagging-TreeTagger</a>  models for Serbian.</p>
+        </div>
+        <div class="card">
+          <h3>Linked Data</h3>
+          <p>Wikidata integration: <a href="https://wd.jerteh.rs/">SPARQL queries with diverse visualizations</a> and <a href="https://llod.jerteh.rs/ELTEC/srp/">SrpELTeC-NIF</a> (NIF, NLP Interchange Format) export. </p>
+        </div>
+        <div class="card">
+          <h3>Open & Reusable</h3>
+          <p>Openly available data (CC‑BY) with reproducible metadata and clear versioning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats">
+      <h2>Collection at a Glance</h2>
+      <div class="kvs">
+        <div class="kv"><b>100+20</b> novels • 66 authors</div>
+        <div class="kv"><b>4.93M</b> words • 368k sentences</div>
+        <div class="kv"><b>149k</b> paragraphs • 20,851 pages</div>
+        <div class="kv"><b>250,340</b> named entities (7 classes)</div>
+        <div class="kv"><b>TEI</b> editions: <a href="https://github.com/COST-ELTeC/ELTeC-srp/tree/master/level1">Level‑1</a> &amp; <a href="https://github.com/COST-ELTeC/ELTeC-srp/tree/master/level2">Level‑2</a> annotations</div>
+      </div>
+    </section>
+
+    <section id="platforms">
+      <h2>Platforms & Access</h2>
+      <div class="grid cols-2">
+        <div class="card" id="downloads">
+          <h3>Downloads</h3>
+          <ul>
+            <li>TEI/XML novels repo links: <a href="https://github.com/COST-ELTeC/ELTeC-srp/tree/master/level1">Level‑1 main</a>, <a href="https://github.com/COST-ELTeC/ELTeC-srp-ext/tree/master/level1">Level‑1 extended</a> & <a href="https://github.com/COST-ELTeC/ELTeC-srp/tree/master/level2">Level‑2</a></li>
+            <li>Metadata <a href="https://github.com/COST-ELTeC/ELTeC-srp/blob/master/srpELTEC-meta_data.csv">CSV</a></li>
+            <li>NER <a href="https://github.com/COST-ELTeC/ELTeC-srp/blob/master/srpELTeC_NER_stat.csv">statistics</a> </li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Explore Online</h3>
+          <ul>
+            <li><a href="https://noske.jerteh.rs/">NoSketch  Engine node</a> (JeRTeh)</li>
+            <li><a href="https://aurora.jerteh.rs/">Aurora portal</a> — vocabulary, concordances, frequency lists</li>
+            <li><a href="https://udaljenocitanje.unilib.rs/">“Udaljeno čitanje”</a> — parallel print scans & digital text</li>
+			<li><a href="http://fuseki.jerteh.rs/#/dataset/SrpELTeC-SMD/query">Fuseki</a> (JeRTeh) — SPARQL endpoint on SrpELTeC-SMD NIF (NLP Interchange Format)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="llod">
+      <h2>Linked Data &amp; SPARQL</h2>
+      <div class="card">
+        <p>
+          The SrpELTeC Linked Data edition uses <strong>NIF</strong>  and maps NE classes to Wikidata/OLiA/DBpedia categories. A public Apache Jena Fuseki endpoint is available at JeRTeh for exploration and SPARQL queries.
+        </p>
+        <p class="muted"><em>Example (Jakov Ignjatović nouns):</em> Retrieve most frequent nouns for an author.</p>
+        <details>
+          <summary><code>SPARQL example (inline snippet)</code></summary>
+<pre><code>PREFIX nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>
+PREFIX xsd: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+SELECT ?lemma (COUNT(?lemma) AS ?count)
+WHERE {
+    ?subject nif:lemma ?lemma ;
+             nif:posTag "NOUN"^^<http://www.w3.org/2001/XMLSchema#string> ;
+             nif:referenceContext ?novelid .
+    # Jakov Ignjatović
+    ?novelid dc:creator wd:Q570913 .
+}
+GROUP BY ?lemma
+ORDER BY desc(?count)
+</code></pre>
+        </details>
+		<p><a href="https://serbian.wikibase.cloud/">Serbian Wikibase</a> hosted on <a href="https://www.wikibase.cloud/">Wikibase Cloud</a>. This Wikibase instance is used for experiments linking the Serbian ELTEC NIF corpus to an <a href="https://github.com/topics/ontolex-lemon">Ontolex-Lemon</a> dictionary. 
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Selected publications</h2>
+      <div class="card">
+        <p class="muted">Key references (selection):</p>
+        <ol class="refs">
+          <li>Ranka Stanković, Cvetana Krstev, and Duško Vitas. <a href="https://doi.org/10.3986/pkn.v47.i2.03">SrpELTeC: A Serbian Literary Corpus for Distant Reading.</a> Primerjalna književnost 47, no. 2 (2024).</li>
+          <li>Cvetana Krstev <a href="https://doi.org/10.18485/infotheca.2021.21.2.2">The Serbian Part of the ELTeC Collection Through the Magnifying Glass of Metadata.</a> Infotheca, vol. 21, no. 2, 2021, pp. 26-42.</li>
+          <li>Ranka Stanković, Cvetana Krstev, Branislava Šandrih Todorović, Mihailo Škorić, <a href="https://doi.org/10.18485/infotheca.2021.21.2.3">Annotation of the Serbian ELTeC Collection.</a> Infotheca, vol. 21, no. 2, 2021, pp. 43–59,  </li>
+          <li>Ranka Stanković, Cvetana Krstev, Branislava Šandrih Todorović, Dusko Vitas, Mihailo Skoric, and Milica Ikonić Nešić <a href="https://aclanthology.org/2022.lrec-1.356/">Distant Reading in Digital Humanities: Case Study on the Serbian Part of the ELTeC Collection.</a> LREC 2022 Conference Proceedings, edited by Nicoletta Calzolari et al., ELRA, Paris, 2022, pp. 3337–3345. </li>
+          <li>Milica Ikonić Nešić, Ranka Stanković, Christof Schöch, and Mihailo Škoric <a href="https://aclanthology.org/2022.ldl-1.2/">From ELTeC Text Collection Metadata and Named Entities to Linked-data (and Back).</a> 8th Workshop on Linked Data in Linguistics within the 13th LREC, ed. Thierry Declerck et al., ELRA, 2022, pp. 7–16.</li>
+          
+        </ol>
+        
+      </div>
+    </section>
+
+    <section id="ack">
+      <h2>Acknowledgments</h2>
+      <div class="card">
+        <p>
+          Supported by  COST Action CA16204 (Distant Reading), the TESLA project (Science Fund of the Republic of Serbia, PRIZMA, Grant 7276), COST Action CA18209 (NexusLinguarum), and Wikimedia Serbia (WikiELTeC).
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>
+          For inquiries, data access, or collaboration proposals:
+        </p>
+        <ul>
+          <li><strong>Cvetana Krstev</strong> —  ORCID 0000-0003-3328-9392</li>
+          <li><strong>Ranka Stanković</strong> —  ORCID 0000-0001-5123-6273</li>
+          <li><strong>Duško Vitas</strong> —  ORCID 0000-0003-4194-692X</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="foot">
+      <p>© SrpELTeC project • Content under CC‑BY 4.0. </p>
+	  <img src="imgs/FooterSrpELTec.png" alt="SrpELTeC logo" width="1100"/>
+    </div>
+  </main>
+</body>
+</html>
