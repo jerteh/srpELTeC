@@ -1,3 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SrpELTeC: Serbian Literary Corpus for Distant Reading</title>
+  <meta name="description" content="SrpELTeC — Serbian sub-collection of ELTeC for distant reading: TEI-encoded novels (1840–1920), TXM analyses, NER/NEL, Linked Data (NIF/Wikidata), tools and publications." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text:#1f2937; /* slate-800 */
+      --muted:#4b5563; /* slate-600 */
+      --accent:#6b21a8; /* purple-800 */
+      --accent-soft:#ede9fe; /* violet-50 */
+      --line:#e5e7eb; /* gray-200 */
+      --bg:#ffffff; /* white background */
+      --card:#fafafa;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:28px 18px}
+    header{border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:10}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .logos{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .logos img{height:70px;object-fit:contain;display:block}
+    .brand{font-weight:800;font-size:clamp(18px,2.6vw,24px);letter-spacing:.2px}
+    nav ul{display:flex;gap:14px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+    nav a{padding:8px 10px;border-radius:12px}
+    nav a:hover{background:var(--accent-soft);text-decoration:none}
+
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 0}
+    .hero h1{margin:0 0 10px;font-size:clamp(28px,4.2vw,46px);line-height:1.06;font-weight:800;color:#3d3a6b}
+    .hero p{margin:0 0 18px;color:var(--muted);font-size:clamp(16px,1.6vw,18px)}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);border:1px solid #ddd;padding:7px 12px;border-radius:999px;font-size:13px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#fff}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+    .btn:hover{filter:brightness(0.98);text-decoration:none}
+
+    .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width: 900px){.hero{grid-template-columns:1fr}.grid.cols-3{grid-template-columns:1fr}.grid.cols-2{grid-template-columns:1fr}}
+
+    h2{font-size:clamp(20px,2.6vw,28px);margin:28px 0 10px}
+    h3{font-size:clamp(18px,2vw,22px);margin:18px 0 8px}
+    .muted{color:var(--muted)}
+    .kvs{display:flex;gap:16px;flex-wrap:wrap}
+    .kv{flex:1;min-width:160px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+    .kv b{display:block;font-size:20px}
+    .foot{margin-top:30px;border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:14px}
+    code,kbd,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+    .refs li{margin-bottom:8px}
+    .author-block{font-size:15px;color:var(--muted)}
+    .author-block a{color:inherit}
+	.logo{
+    width:38px;height:38px;border-radius:12px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:grid;place-items:center;color:white;font-weight:800;
+    box-shadow:0 6px 14px rgba(13,71,161,.18)
+  }
+	.logo-bg{ background:#c4b5fd;  padding:8px 10px;            /* margina oko logotipa */
+     border-radius:12px;          /* zaobljeni uglovi (po želji) */
+     display:inline-flex; align-items:center; justify-content:center; }
+    .logo-bg img{ height:40px;  width:auto;
+     display:block;               /* uklanja prazni razmak ispod slike */
+    }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="imgs/favicon.svg">
+</head>
+<body>
+  <header>
+
+   <!-- /favicon.svg -->
+
+
+    <div class="container topbar">
+
+      <div class="logos">
+        <img src="imgs/TeslaJertehDRLogo.png" alt="SrpELTeC logo" /> 
+      </div>
+      <div class="brand">SrpELTeC</div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#abstract">Abstract</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#stats">Stats</a></li>
+          <li><a href="#platforms">Platforms</a></li>
+          <li><a href="#llod">Linked Data</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div>
+        <span class="badge">Serbian ELTeC sub‑collection • 1840–1920 • TEI/XML</span>
+        <h1>SrpELTeC: Serbian Literary Corpus for Distant Reading</h1>
+        <p class="author-block">
+		  This is the Serbian novel collection for the ELTeC, the European Literary Text Collection, produced by the COST Action Distant Reading for European Literary History, <a href="https://distant-reading.net">CA16204</a>.<br/>
+		   <b>Collection editor:</b> Cvetana Krstev, JeRTeH &amp; University of Belgrade; <br/>
+		   <b>Contributors:</b> Ranka Stanković, JeRTeH &amp; University of Belgrade; Aleksandra Trtovac, Vasilije Milnović, University Library “Svetozar Marković”; volunteers of <a href="http://jerteh.rs/">Jerteh</a> (Society for Language Resources and Technologies), the most active Duško Vitas and Ivan Obradović. </p>
+        <div class="cta">
+          <a class="btn primary" href="#downloads">Get the corpus</a>
+          <a class="btn" href="srELTeC-list.html">Browse corpus</a>
+          <a class="btn" href="#publications">Read publications</a>
+		</div>
+      </div>
+      <div class="card">
+	  <h3>Sources</h3> 
+	  <p>University Library “Svetozar Marković”, National Library of Serbia, "Matica srpska" Library, Library of SASA, Library of Serbian Literature Department at the Faculty of Philology UB, private library Cvetana Krstev &amp; Duško Vitas </p>
+        <h3>License</h3>
+        <p>All versions of SrpELTeC are freely available under <a href="https://creativecommons.org/licenses/by/4.0/">CC‑BY 4.0</a>.</p>
+        <h3>Citation</h3>
+        <p>Please cite the publications listed below (see <a href="#publications">Publications</a>).</p>
+		 <p>See also <a href="https://jerteh.github.io/srpELTeC-ijk">srpELTeC-ijk</p>
       </div>
     </section>
 
